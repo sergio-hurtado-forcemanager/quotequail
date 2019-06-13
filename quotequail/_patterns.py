@@ -9,6 +9,7 @@ REPLY_PATTERNS = [
     u'El (.*) escribió:$', # Spanish
     u'^(.*) написал\(а\):$',  # Russian
     u'^Den (.*) skrev (.*):$', # Swedish
+    u'^Da (.*) Inviato:$', # Italian
     u'([0-9]{4}/[0-9]{1,2}/[0-9]{1,2}) (.* <.*@.*>)$', # gmail (?) reply
 ]
 
@@ -17,10 +18,10 @@ REPLY_DATE_SPLIT_REGEX = re.compile(r'^(.*(:[0-9]{2}( [apAP]\.?[mM]\.?)?)), (.*)
 FORWARD_MESSAGES = [
     # apple mail forward
     'Begin forwarded message', 'Anfang der weitergeleiteten E-Mail',
-    u'Début du message réexpédié', 'Inicio del mensaje reenviado',
+    u'Début du message réexpédié', 'Inicio del mensaje reenviado', 'Inizio del messaggio inoltrato',
 
     # gmail/evolution forward
-    'Forwarded [mM]essage', 'Mensaje reenviado', 'Vidarebefordrat meddelande',
+    'Forwarded [mM]essage', 'Mensaje reenviado', 'Vidarebefordrat meddelande', 'Messaggio inoltrato',
 
     # outlook
     'Original [mM]essage', 'Ursprüngliche Nachricht', 'Mensaje [oO]riginal',
@@ -55,6 +56,7 @@ HEADER_MAP = {
     'de': 'from',
     u'от кого': 'from',
     u'från': 'from',
+    'da': 'from',
 
     'to': 'to',
     'an': 'to',
@@ -63,6 +65,7 @@ HEADER_MAP = {
     u'pour': 'to',
     u'кому': 'to',
     u'till': 'to',
+    'a': 'to',
 
     'cc': 'cc',
     'kopie': 'cc',
@@ -86,6 +89,7 @@ HEADER_MAP = {
     'enviados': 'date',
     'fecha': 'date',
     u'дата': 'date',
+    'inviato': 'date',
 
     'subject': 'subject',
     'betreff': 'subject',
@@ -94,6 +98,7 @@ HEADER_MAP = {
     'sujet': 'subject',
     u'тема': 'subject',
     u'ämne': 'subject',
+    'oggetto': 'subject',
 }
 
 COMPILED_PATTERN_MAP = {
